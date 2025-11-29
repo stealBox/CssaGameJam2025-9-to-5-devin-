@@ -14,13 +14,16 @@ public class PlayerMovement : MonoBehaviour
     public InputAction moveAction;
     public InputAction jumpAction;
 
+    private PlayerState state;
+
     // Adds controller when program starts
     private void Awake() 
     {
         controller = gameObject.AddComponent<CharacterController>();
         moveAction = InputSystem.actions.FindAction("Move");
         jumpAction = InputSystem.actions.FindAction("Jump");
-        
+        state = new PlayerState(GlobalVars.Collectables.default); // Stub for default evolution
+        PlayerManager.instance.setPlayerState(state);
     }
 
     private void OnEnable() 
