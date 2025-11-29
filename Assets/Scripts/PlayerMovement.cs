@@ -16,8 +16,9 @@ public class PlayerMovement : MonoBehaviour
     private float turnSmoothTime = 0.1f;
     private float turnSmoothVel;
     private CharacterController controller;
-    private Vector3 playerVelocity;
-    private bool grounded;
+    public Vector3 playerVelocity;
+    public bool grounded;
+    public Vector3 finalMove;
 
     public InputAction moveAction;
     public InputAction jumpAction;
@@ -30,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
 
         setDefaultEvo();
 
-        controller = gameObject.AddComponent<CharacterController>();
+        controller = gameObject.GetComponent<CharacterController>();
         cam = GameObject.FindGameObjectWithTag("MainCamera").transform;
         moveAction = InputSystem.actions.FindAction("Move");
         jumpAction = InputSystem.actions.FindAction("Jump");
@@ -51,11 +52,6 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        grounded = controller.isGrounded;
-        if (grounded && playerVelocity.y < 0) 
-        {
-            playerVelocity.y = 0f;
-        }
 
         Vector2 input = moveAction.ReadValue<Vector2>();
         Vector3 move = new Vector3(input.x, 0, input.y).normalized;
@@ -74,8 +70,24 @@ public class PlayerMovement : MonoBehaviour
 
         playerVelocity.y += gravity * Time.deltaTime;
 
-        Vector3 finalMove = (move.normalized * playerSpeed) + (playerVelocity.y * Vector3.up);
+        finalMove = (move.normalized * playerSpeed) + (playerVelocity.y * Vector3.up);
+        // if (grounded && playerVelocity.y < 0) 
+        // {
+        //     playerVelocity.y = 0.0f;
+        // }
+
+        
         controller.Move(finalMove * Time.deltaTime);
+
+        bool lastGrounded = grounded;
+        grounded = controller.isGrounded;
+        
+        // Walk off of ledge -> reset Y velocity.
+        if (!grounded && lastGrounded != grounded && !jumpAction.triggered) {
+            playerVelocity.y = 0.0f;
+        }
+
+        
     }
 
     public void changeEvo(GlobalVars.Evolutions evo) {
