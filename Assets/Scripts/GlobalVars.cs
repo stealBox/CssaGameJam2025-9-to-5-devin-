@@ -3,7 +3,7 @@ using UnityEngine;
 public class GlobalVars : MonoBehaviour
 {
     public enum Evolutions{
-        default,
+        defaultEvo,
         evo1,
         evo2,
         evo3

@@ -13,6 +13,7 @@ public class PlayerManager : MonoBehaviour
     // Creates a new singleton and player stats
     void Awake()
     {
+        Debug.Log("Creating manager");
         if (instance != null && instance != this) {
             Destroy(this);
         }
@@ -36,7 +37,7 @@ public class PlayerManager : MonoBehaviour
     }
 
     // Changes a state of the player
-    public void changeState(GlobalVars.Collectables state) {
+    public void changeState(GlobalVars.Evolutions state) {
         playerState.state = state;
     } 
 
