@@ -33,8 +33,6 @@ public class PlayerMovement : MonoBehaviour
         controller = gameObject.AddComponent<CharacterController>();
         moveAction = InputSystem.actions.FindAction("Move");
         jumpAction = InputSystem.actions.FindAction("Jump");
-        state = new PlayerState(GlobalVars.Evolutions.defaultEvo);
-        PlayerManager.instance.setPlayerState(state);
     }
 
     private void OnEnable() 
@@ -84,13 +82,13 @@ public class PlayerMovement : MonoBehaviour
 
         switch (evo) {
             case GlobalVars.Evolutions.evo1:
-                playerSpeed *= 1.5;
+                playerSpeed *= 1.5f;
                 break;
             case GlobalVars.Evolutions.evo2:
-                jumpHeight *= 1.5;
+                jumpHeight *= 1.5f;
                 break;
             case GlobalVars.Evolutions.evo3:
-                gravity /= 1.5;
+                gravity /= 1.5f;
                 break;
         }
     }
