@@ -683,6 +683,10 @@ PrefabInstance:
       value: Sphere
       objectReference: {fileID: 0}
     - target: {fileID: 2678009203184344756, guid: 1c0539462bbb0d242974dfa0bd11c9d9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2678009203184344756, guid: 1c0539462bbb0d242974dfa0bd11c9d9, type: 3}
       propertyPath: m_TagString
       value: Collectable
       objectReference: {fileID: 0}
