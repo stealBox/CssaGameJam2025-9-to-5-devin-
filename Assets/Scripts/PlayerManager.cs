@@ -85,6 +85,7 @@ public class PlayerManager : MonoBehaviour
     // Damages the player
     public void DamagePlayer(int damage) {
         health -= damage;
+        Debug.Log("You took damage!");
         if (isDead()) {
             LoseGame();
         }
@@ -97,7 +98,7 @@ public class PlayerManager : MonoBehaviour
 
     // What happens when the player wins
     public void WinGame() {
-
+        Debug.Log("You won!");
     }
 
     // What happens when the player loses
