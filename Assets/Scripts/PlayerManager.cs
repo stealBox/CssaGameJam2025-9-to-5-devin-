@@ -8,6 +8,8 @@ public class PlayerManager : MonoBehaviour
 
     private PlayerMovement playerStats;
 
+    private static GlobalVars.Evolutions playerState;
+
     private int health;
 
     // Creates a new singleton and player stats
@@ -21,8 +23,13 @@ public class PlayerManager : MonoBehaviour
             instance = this;
         }
 
+        playerState = GlobalVars.Evolutions.defaultEvo;
         health = MAX_HEALTH;
         playerStats = GameObject.FindObjectOfType<PlayerMovement>().GetComponent<PlayerMovement>();
+
+        EventManager.powerOne += powerOneSet;
+        EventManager.powerTwo += powerTwoSet;
+        EventManager.powerThree += powerThreeSet;
     }
 
     // Update is called once per frame
@@ -31,10 +38,40 @@ public class PlayerManager : MonoBehaviour
         
     }
 
+    private void powerOneSet()
+    {
+        GlobalVars.evo1PickUp = false;
+        GlobalVars.evo2PickUp = true;
+        GlobalVars.evo3PickUp = true;
+        changeState(GlobalVars.Evolutions.evo1);
+    }
+
+    private void powerTwoSet()
+    {
+        GlobalVars.evo1PickUp = true;
+        GlobalVars.evo2PickUp = false;
+        GlobalVars.evo3PickUp = true;
+        changeState(GlobalVars.Evolutions.evo2);
+    }
+
+    private void powerThreeSet()
+    {
+        GlobalVars.evo1PickUp = true;
+        GlobalVars.evo2PickUp = true;
+        GlobalVars.evo3PickUp = false;
+        changeState(GlobalVars.Evolutions.evo3);
+    }
+
     // Changes a state of the player
     public void changeState(GlobalVars.Evolutions evo) {
+        playerState = evo;
         playerStats.changeEvo(evo);
     } 
+
+    public static GlobalVars.Evolutions getState()
+    {
+        return playerState;
+    }
 
     // Damages the player
     public void DamagePlayer(int damage) {

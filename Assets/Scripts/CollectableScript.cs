@@ -6,20 +6,60 @@ public class CollectableScript : MonoBehaviour
 {
     private GameObject currObj;
 
-    public static event Action OnCollected;//event that can be activated and referanced elsewhere 
-    //it is possible we could make an event for each "power"
-    public string typeOfCollectable;//replace this with an enum later if you can
+    private GlobalVars.Evolutions typeOfCollectable;//replace this with an enum later if you can
+
+    //allows for the dev to select type in inspector with check boxs
+    public bool defaultEvo;//just incase...
+    public bool evo1;
+    public bool evo2;
+    public bool evo3;
 
     private bool state = true;//true == able to be collected, false == unable to be collected
 
     void Start()
     {
         currObj = this.gameObject;
+        if (evo1)
+        {
+            typeOfCollectable = GlobalVars.Evolutions.evo1;
+        }else if (evo2)
+        {
+            typeOfCollectable = GlobalVars.Evolutions.evo2;
+        }else if (evo3)
+        {
+            typeOfCollectable = GlobalVars.Evolutions.evo3;
+        }
+        else
+        {
+            typeOfCollectable = GlobalVars.Evolutions.defaultEvo;
+        }
     }
 
     void Update()
     {
         transform.localRotation = Quaternion.Euler(90f, Time.time * 100f, 0);
+        //This will be a later implement, it's 2am
+        switch (PlayerManager.getState())
+        {
+            case GlobalVars.Evolutions.evo1:
+                if (evo1)
+                {
+                    state = GlobalVars.evo1PickUp;
+                }
+                break;
+            case GlobalVars.Evolutions.evo2:
+                if (evo2)
+                {
+                    state = GlobalVars.evo2PickUp;
+                }
+                break;
+            case GlobalVars.Evolutions.evo3:
+                if (evo3)
+                {
+                    state = GlobalVars.evo3PickUp;
+                }
+                break;
+        }
         currObj.SetActive(state);
     }
 
@@ -27,9 +67,25 @@ public class CollectableScript : MonoBehaviour
     {
         if(colided.CompareTag("Player") && state)
         {
-            state = false;
-            OnCollected?.Invoke();
-            //the ? means the same thing as if(OnCollected != null)
+            if (!defaultEvo)
+            {
+                state = false;
+            }
+            switch (typeOfCollectable)
+            {
+                case GlobalVars.Evolutions.evo1:
+                    EventManager.powerOneActivate();
+                    break;
+                case GlobalVars.Evolutions.evo2:
+                    EventManager.powerTwoActivate();
+                    break;
+                case GlobalVars.Evolutions.evo3:
+                    EventManager.powerThreeAcivate();
+                    break;
+                default:
+                    EventManager.powerRemove();
+                    break;
+            }
         }
     }
 
