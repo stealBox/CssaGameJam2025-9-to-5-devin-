@@ -89,7 +89,7 @@ public class PlayerMovement : MonoBehaviour
                 jumpHeight *= 2.0f;
                 break;
             case GlobalVars.Evolutions.evo3:
-                gravity /= 1.5f;
+                gravity /= 2.5f;
                 break;
         }
     }
