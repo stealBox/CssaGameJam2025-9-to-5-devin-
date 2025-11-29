@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CollectableScript : MonoBehaviour
 {
-    private GameObject currObj;
 
     private GlobalVars.Evolutions typeOfCollectable;//replace this with an enum later if you can
 
@@ -16,7 +15,6 @@ public class CollectableScript : MonoBehaviour
 
     void Start()
     {
-        currObj = this.gameObject;
         if (evo1)
         {
             typeOfCollectable = GlobalVars.Evolutions.evo1;
