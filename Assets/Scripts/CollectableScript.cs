@@ -17,14 +17,24 @@ public class CollectableScript : MonoBehaviour
 
     void Update()
     {
-        if (!state)//state will be changed in the player collider script for whenever it hits a gameObject with the collectible tag
-        {
-            currObj.SetActive(false);
-        }
-        else
+        if (state)
         {
             currObj.SetActive(true);
         }
+        else
+        {
+            currObj.SetActive(false);
+        }
+    }
+
+    private void OnTriggerEnter(Collider colided)
+    {
+
+        if(colided.tag == "Player")
+        {
+            state = false;
+        }
+
     }
 
 }

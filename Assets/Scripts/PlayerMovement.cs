@@ -11,25 +11,26 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 playerVelocity;
     private bool grounded;
 
-    public InputActionReference moveAction;
-    public InputActionReference jumpAction;
+    public InputAction moveAction;
+    public InputAction jumpAction;
 
     // Adds controller when program starts
     private void Awake() 
     {
         controller = gameObject.AddComponent<CharacterController>();
-        //moveAction.action.Enable();
+        moveAction = InputSystem.actions.FindAction("Move");
+        jumpAction = InputSystem.actions.FindAction("Jump");
         
     }
 
     private void OnEnable() 
     {
-        moveAction.action.Enable();
+        moveAction.Enable();
     }
 
     private void OnDisable()
     {
-        moveAction.action.Disable();
+        moveAction.Disable();
     }
 
     // Update is called once per frame
@@ -41,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
             playerVelocity.y = 0f;
         }
 
-        Vector2 input = moveAction.action.ReadValue<Vector2>();
+        Vector2 input = moveAction.ReadValue<Vector2>();
         Vector3 move = new Vector3(input.x, 0, input.y);
         move = Vector3.ClampMagnitude(move, 1f);
 
@@ -49,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
             transform.forward = move;
         }
 
-        if (jumpAction.action.triggered && grounded)
+        if (jumpAction.triggered && grounded)
         {
             playerVelocity.y = Mathf.Sqrt(jumpHeight * -2.0f * gravity);
         }
