@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     private float jumpHeight;
     private float gravity;
 
-    [SerializeField] private Transform cam;
+    private Transform cam;
 
     private float turnSmoothTime = 0.1f;
     private float turnSmoothVel;
@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
         setDefaultEvo();
 
         controller = gameObject.AddComponent<CharacterController>();
+        cam = GameObject.FindGameObjectWithTag("MainCamera").transform;
         moveAction = InputSystem.actions.FindAction("Move");
         jumpAction = InputSystem.actions.FindAction("Jump");
     }

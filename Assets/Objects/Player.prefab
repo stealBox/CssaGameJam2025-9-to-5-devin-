@@ -126,8 +126,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68128c2cd90ed475e83898dad76da4cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  playerSpeed: 5
-  jumpHeight: 1.5
-  gravity: -9.81
-  moveAction: {fileID: 0}
-  jumpAction: {fileID: 0}
+  cam: {fileID: 0}
+  moveAction:
+    m_Name: Move
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 36a7b93b-a4a5-41c6-9145-cc68df3e18a1
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  jumpAction:
+    m_Name: Jump
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: ab921230-a21c-473a-8347-754cb096bd4e
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0

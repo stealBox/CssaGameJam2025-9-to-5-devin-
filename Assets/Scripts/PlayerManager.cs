@@ -13,7 +13,6 @@ public class PlayerManager : MonoBehaviour
     // Creates a new singleton and player stats
     void Awake()
     {
-        Debug.Log("Creating manager");
         if (instance != null && instance != this) {
             Destroy(this);
         }
