@@ -6,7 +6,7 @@ public class PlayerManager : MonoBehaviour
 
     public static PlayerManager instance {get; private set;}
 
-    private PlayerState playerState;
+    private PlayerMovement playerStats;
 
     private int health;
 
@@ -23,6 +23,7 @@ public class PlayerManager : MonoBehaviour
         }
 
         health = MAX_HEALTH;
+        playerStats = GameObject.FindObjectOfType<PlayerMovement>().GetComponent<PlayerMovement>();
     }
 
     // Update is called once per frame
@@ -31,14 +32,9 @@ public class PlayerManager : MonoBehaviour
         
     }
 
-    // NO TOUCHY!!! This is so that I connect the singleton to the player controller
-    public void setPlayerState(PlayerState playerState) {
-        this.playerState = playerState;
-    }
-
     // Changes a state of the player
-    public void changeState(GlobalVars.Evolutions state) {
-        playerState.state = state;
+    public void changeState(GlobalVars.Evolutions evo) {
+        playerStats.changeEvo(evo);
     } 
 
     // Damages the player

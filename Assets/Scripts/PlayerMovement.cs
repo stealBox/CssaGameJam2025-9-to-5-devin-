@@ -3,9 +3,13 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] float playerSpeed = 5f;
-    [SerializeField] float jumpHeight = 1.5f;
-    [SerializeField] float gravity = -9.81f;
+    const float DEFAULT_SPEED = 5f;
+    const float DEFAULT_JUMP = 1.5f;
+    const float DEFAULT_GRAVITY = -9.81;
+
+    private float playerSpeed;
+    private float jumpHeight;
+    private float gravity;
 
     [SerializeField] private Transform cam;
 
@@ -25,6 +29,9 @@ public class PlayerMovement : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        setDefaultEvo();
+
         controller = gameObject.AddComponent<CharacterController>();
         moveAction = InputSystem.actions.FindAction("Move");
         jumpAction = InputSystem.actions.FindAction("Jump");
@@ -72,5 +79,27 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 finalMove = (move.normalized * playerSpeed) + (playerVelocity.y * Vector3.up);
         controller.Move(finalMove * Time.deltaTime);
+    }
+
+    public void changeEvo(GlobalVars.Evolutions evo) {
+        setDefaultEvo();
+
+        switch (evo) {
+            case GlobalVars.Evolutions.evo1:
+                playerSpeed *= 1.5;
+                break;
+            case GlobalVars.Evolutions.evo2:
+                jumpHeight *= 1.5;
+                break;
+            case GlobalVars.Evolutions.evo3:
+                gravity /= 1.5;
+                break;
+        }
+    }
+
+    private void setDefaultEvo() {
+        playerSpeed = DEFAULT_SPEED;
+        jumpHeight = DEFAULT_JUMP;
+        gravity = DEFAULT_GRAVITY;
     }
 }
