@@ -5,7 +5,7 @@ public class PlayerMovement : MonoBehaviour
 {
     const float DEFAULT_SPEED = 5f;
     const float DEFAULT_JUMP = 1.5f;
-    const float DEFAULT_GRAVITY = -9.81;
+    const float DEFAULT_GRAVITY = -9.81f;
 
     private float playerSpeed;
     private float jumpHeight;
@@ -21,8 +21,6 @@ public class PlayerMovement : MonoBehaviour
 
     public InputAction moveAction;
     public InputAction jumpAction;
-
-    private PlayerState state;
 
     // Adds controller when program starts
     private void Start() 
