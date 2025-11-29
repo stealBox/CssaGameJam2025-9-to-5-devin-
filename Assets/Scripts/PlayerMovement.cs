@@ -23,6 +23,16 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
+    private void OnEnable() 
+    {
+        moveAction.Enable();
+    }
+
+    private void OnDisable()
+    {
+        moveAction.Disable();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -32,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
             playerVelocity.y = 0f;
         }
 
-        Vector2 input = moveAction.action.ReadValue<Vector2>();
+        Vector2 input = moveAction.ReadValue<Vector2>();
         Vector3 move = new Vector3(input.x, 0, input.y);
         move = Vector3.ClampMagnitude(move, 1f);
 
@@ -40,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
             transform.forward = move;
         }
 
-        if (jumpAction.action.triggered && grounded)
+        if (jumpAction.triggered && grounded)
         {
             playerVelocity.y = Mathf.Sqrt(jumpHeight * -2.0f * gravity);
         }
