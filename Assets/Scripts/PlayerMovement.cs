@@ -11,14 +11,15 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 playerVelocity;
     private bool grounded;
 
-    public InputActionReference moveAction;
-    public InputActionReference jumpAction;
+    public InputAction moveAction;
+    public InputAction jumpAction;
 
     // Adds controller when program starts
     private void Awake() 
     {
         controller = gameObject.AddComponent<CharacterController>();
-        //moveAction.action.Enable();
+        moveAction = InputSystem.action.FindAction("Move");
+        jumpAction = InputSystem.action.FindAction("Jump");
         
     }
 
