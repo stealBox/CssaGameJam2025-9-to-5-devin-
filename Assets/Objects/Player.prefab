@@ -155,7 +155,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b22a6368e88c51a46b5750e58cde9023, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: -1.075
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b22a6368e88c51a46b5750e58cde9023, type: 3}
       propertyPath: m_LocalPosition.z
@@ -189,6 +189,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2843909369972686622, guid: b22a6368e88c51a46b5750e58cde9023, type: 3}
+      propertyPath: m_Quality
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -2843909369972686622, guid: b22a6368e88c51a46b5750e58cde9023, type: 3}
+      propertyPath: 'm_BlendShapeWeights.Array.data[0]'
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b22a6368e88c51a46b5750e58cde9023, type: 3}
       propertyPath: m_Name
       value: character
@@ -204,6 +212,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1068728198196045406}
   m_SourcePrefab: {fileID: 100100000, guid: b22a6368e88c51a46b5750e58cde9023, type: 3}
+--- !u!137 &881975932895716557 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -2843909369972686622, guid: b22a6368e88c51a46b5750e58cde9023, type: 3}
+  m_PrefabInstance: {fileID: 6103801426028192815}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5998713836928205764 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b22a6368e88c51a46b5750e58cde9023, type: 3}
@@ -246,3 +259,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   player: {fileID: 2946541705760327609}
+  characterMesh: {fileID: 881975932895716557}
+  legScale: 0.995
