@@ -1,40 +1,63 @@
+using System;
 using UnityEngine;
 
 
 public class CollectableScript : MonoBehaviour
 {
-    public GameObject player;
     private GameObject currObj;
 
-    public string typeOfCollectable;//replace this with an enum later if you can
+    private GlobalVars.Evolutions typeOfCollectable;//replace this with an enum later if you can
 
-    private bool state = true;//true == able to be collected, false == unable to be collected
+    //allows for the dev to select type in inspector with check boxs
+    public bool defaultEvo;//just incase...
+    public bool evo1;
+    public bool evo2;
+    public bool evo3;
 
     void Start()
     {
         currObj = this.gameObject;
+        if (evo1)
+        {
+            typeOfCollectable = GlobalVars.Evolutions.evo1;
+        }else if (evo2)
+        {
+            typeOfCollectable = GlobalVars.Evolutions.evo2;
+        }else if (evo3)
+        {
+            typeOfCollectable = GlobalVars.Evolutions.evo3;
+        }
+        else
+        {
+            typeOfCollectable = GlobalVars.Evolutions.defaultEvo;
+        }
     }
 
     void Update()
     {
-        if (state)
-        {
-            currObj.SetActive(true);
-        }
-        else
-        {
-            currObj.SetActive(false);
-        }
+        transform.localRotation = Quaternion.Euler(0f, Time.time * 100f, 0);
     }
 
-    private void OnTriggerEnter(Collider colided)
+    void OnTriggerEnter(Collider colided)
     {
-
-        if(colided.tag == "Player")
+        if(colided.CompareTag("Player"))
         {
-            state = false;
+            switch (typeOfCollectable)
+            {
+                case GlobalVars.Evolutions.evo1:
+                    EventManager.powerOneActivate();
+                    break;
+                case GlobalVars.Evolutions.evo2:
+                    EventManager.powerTwoActivate();
+                    break;
+                case GlobalVars.Evolutions.evo3:
+                    EventManager.powerThreeAcivate();
+                    break;
+                default:
+                    EventManager.powerRemove();
+                    break;
+            }
         }
-
     }
 
 }

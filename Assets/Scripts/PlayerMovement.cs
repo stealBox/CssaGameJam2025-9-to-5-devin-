@@ -3,10 +3,18 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] float playerSpeed = 5f;
-    [SerializeField] float jumpHeight = 1.5f;
-    [SerializeField] float gravity = -9.81f;
+    const float DEFAULT_SPEED = 5f;
+    const float DEFAULT_JUMP = 1.5f;
+    const float DEFAULT_GRAVITY = -9.81f;
 
+    private float playerSpeed;
+    private float jumpHeight;
+    private float gravity;
+
+    private Transform cam;
+
+    private float turnSmoothTime = 0.1f;
+    private float turnSmoothVel;
     private CharacterController controller;
     private Vector3 playerVelocity;
     private bool grounded;
@@ -15,22 +23,29 @@ public class PlayerMovement : MonoBehaviour
     public InputAction jumpAction;
 
     // Adds controller when program starts
-    private void Awake() 
+    private void Start() 
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        setDefaultEvo();
+
         controller = gameObject.AddComponent<CharacterController>();
+        cam = GameObject.FindGameObjectWithTag("MainCamera").transform;
         moveAction = InputSystem.actions.FindAction("Move");
         jumpAction = InputSystem.actions.FindAction("Jump");
-        
     }
 
     private void OnEnable() 
     {
         moveAction.Enable();
+        jumpAction.Enable();
     }
 
     private void OnDisable()
     {
         moveAction.Disable();
+        jumpAction.Enable();
     }
 
     // Update is called once per frame
@@ -43,11 +58,13 @@ public class PlayerMovement : MonoBehaviour
         }
 
         Vector2 input = moveAction.ReadValue<Vector2>();
-        Vector3 move = new Vector3(input.x, 0, input.y);
-        move = Vector3.ClampMagnitude(move, 1f);
-
-        if (move != Vector3.zero) {
-            transform.forward = move;
+        Vector3 move = new Vector3(input.x, 0, input.y).normalized;
+        
+        if (move.magnitude >= 0.1f) {
+            float targetAngle = Mathf.Atan2(move.x, move.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVel, turnSmoothTime);
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+            move = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
         }
 
         if (jumpAction.triggered && grounded)
@@ -57,7 +74,29 @@ public class PlayerMovement : MonoBehaviour
 
         playerVelocity.y += gravity * Time.deltaTime;
 
-        Vector3 finalMove = (move * playerSpeed) + (playerVelocity.y * Vector3.up);
+        Vector3 finalMove = (move.normalized * playerSpeed) + (playerVelocity.y * Vector3.up);
         controller.Move(finalMove * Time.deltaTime);
+    }
+
+    public void changeEvo(GlobalVars.Evolutions evo) {
+        setDefaultEvo();
+
+        switch (evo) {
+            case GlobalVars.Evolutions.evo1:
+                playerSpeed *= 1.5f;
+                break;
+            case GlobalVars.Evolutions.evo2:
+                jumpHeight *= 2.0f;
+                break;
+            case GlobalVars.Evolutions.evo3:
+                gravity /= 2.5f;
+                break;
+        }
+    }
+
+    private void setDefaultEvo() {
+        playerSpeed = DEFAULT_SPEED;
+        jumpHeight = DEFAULT_JUMP;
+        gravity = DEFAULT_GRAVITY;
     }
 }
