@@ -56,6 +56,6 @@ public class PlayerManager : MonoBehaviour
 
     // What happens when the player loses
     private void LoseGame() {
-
+        Debug.Log("You lost!");
     }
 }
