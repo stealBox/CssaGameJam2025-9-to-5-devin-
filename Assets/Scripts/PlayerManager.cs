@@ -30,6 +30,7 @@ public class PlayerManager : MonoBehaviour
         EventManager.powerOne += powerOneSet;
         EventManager.powerTwo += powerTwoSet;
         EventManager.powerThree += powerThreeSet;
+        EventManager.powerDefault += powerDefaultSet;
     }
 
     // Update is called once per frame
@@ -60,6 +61,14 @@ public class PlayerManager : MonoBehaviour
         GlobalVars.evo2PickUp = true;
         GlobalVars.evo3PickUp = false;
         changeState(GlobalVars.Evolutions.evo3);
+    }
+
+    private void powerDefaultSet()
+    {
+        GlobalVars.evo1PickUp = true;
+        GlobalVars.evo2PickUp = true;
+        GlobalVars.evo3PickUp = true;
+        changeState(GlobalVars.Evolutions.defaultEvo);
     }
 
     // Changes a state of the player

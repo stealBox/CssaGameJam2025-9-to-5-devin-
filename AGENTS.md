@@ -4,11 +4,11 @@
 - Active scene:
   - Name: SampleScene
   - Tags:
-    - Untagged, Respawn, Finish, EditorOnly, MainCamera, Player, GameController, Collectable
+    - Untagged, Respawn, Finish, EditorOnly, MainCamera, Player, GameController, Collectable, Evo1, Evo2, Evo3, DefaultEvo
   - Layers:
     - Default, TransparentFX, Ignore Raycast, Water, UI
 - Active game object:
-  - Name: Sphere
-  - Tag: Collectable
+  - Name: GameObject
+  - Tag: Untagged
   - Layer: Default
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->

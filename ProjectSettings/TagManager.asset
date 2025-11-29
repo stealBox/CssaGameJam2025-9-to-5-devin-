@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 3
   tags:
   - Collectable
+  - Evo1
+  - Evo2
+  - Evo3
+  - DefaultEvo
   layers:
   - Default
   - TransparentFX

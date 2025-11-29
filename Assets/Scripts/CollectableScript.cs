@@ -14,8 +14,6 @@ public class CollectableScript : MonoBehaviour
     public bool evo2;
     public bool evo3;
 
-    private bool state = true;//true == able to be collected, false == unable to be collected
-
     void Start()
     {
         currObj = this.gameObject;
@@ -38,39 +36,12 @@ public class CollectableScript : MonoBehaviour
     void Update()
     {
         transform.localRotation = Quaternion.Euler(90f, Time.time * 100f, 0);
-        //This will be a later implement, it's 2am
-        switch (PlayerManager.getState())
-        {
-            case GlobalVars.Evolutions.evo1:
-                if (evo1)
-                {
-                    state = GlobalVars.evo1PickUp;
-                }
-                break;
-            case GlobalVars.Evolutions.evo2:
-                if (evo2)
-                {
-                    state = GlobalVars.evo2PickUp;
-                }
-                break;
-            case GlobalVars.Evolutions.evo3:
-                if (evo3)
-                {
-                    state = GlobalVars.evo3PickUp;
-                }
-                break;
-        }
-        currObj.SetActive(state);
     }
 
     void OnTriggerEnter(Collider colided)
     {
-        if(colided.CompareTag("Player") && state)
+        if(colided.CompareTag("Player"))
         {
-            if (!defaultEvo)
-            {
-                state = false;
-            }
             switch (typeOfCollectable)
             {
                 case GlobalVars.Evolutions.evo1:
