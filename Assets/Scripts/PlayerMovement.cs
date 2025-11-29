@@ -18,19 +18,9 @@ public class PlayerMovement : MonoBehaviour
     private void Awake() 
     {
         controller = gameObject.AddComponent<CharacterController>();
-        moveAction = InputSystem.action.FindAction("Move");
-        jumpAction = InputSystem.action.FindAction("Jump");
+        moveAction = InputSystem.actions.FindAction("Move");
+        jumpAction = InputSystem.actions.FindAction("Jump");
         
-    }
-
-    private void OnEnable() 
-    {
-        moveAction.action.Enable();
-    }
-
-    private void OnDisable()
-    {
-        moveAction.action.Disable();
     }
 
     // Update is called once per frame
