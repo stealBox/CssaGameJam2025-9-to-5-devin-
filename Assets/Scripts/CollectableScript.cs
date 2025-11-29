@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CollectableScript : MonoBehaviour
 {
-    private GameObject currObj;
 
     private GlobalVars.Evolutions typeOfCollectable;//replace this with an enum later if you can
 
@@ -16,7 +15,6 @@ public class CollectableScript : MonoBehaviour
 
     void Start()
     {
-        currObj = this.gameObject;
         if (evo1)
         {
             typeOfCollectable = GlobalVars.Evolutions.evo1;
@@ -42,21 +40,7 @@ public class CollectableScript : MonoBehaviour
     {
         if(colided.CompareTag("Player"))
         {
-            switch (typeOfCollectable)
-            {
-                case GlobalVars.Evolutions.evo1:
-                    EventManager.powerOneActivate();
-                    break;
-                case GlobalVars.Evolutions.evo2:
-                    EventManager.powerTwoActivate();
-                    break;
-                case GlobalVars.Evolutions.evo3:
-                    EventManager.powerThreeAcivate();
-                    break;
-                default:
-                    EventManager.powerRemove();
-                    break;
-            }
+            EventManager.powerUpdate(typeOfCollectable);
         }
     }
 
