@@ -13,7 +13,7 @@ public class GateControl : MonoBehaviour
 
     void Start()
     {
-        EventManager.powerChanged += stateChange;
+        EventManager.instance.powerChanged += stateChange;
         if (evo1)
         {
             stateToAllow = GlobalVars.Evolutions.evo1;

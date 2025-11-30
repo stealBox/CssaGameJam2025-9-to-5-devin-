@@ -30,7 +30,7 @@ public class Checkpoint : MonoBehaviour
     {
         if(collider.CompareTag("Player"))
         {
-            EventManager.checkpointUpdate();
+            EventManager.instance.checkpointUpdate();
             renderer.material = materialActivated;
 
             activated = true;

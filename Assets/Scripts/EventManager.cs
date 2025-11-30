@@ -1,28 +1,39 @@
 using UnityEngine;
 using System;
 
-public class EventManager
+public class EventManager : MonoBehaviour
 {
-    public static EventManager Instance { get; private set; }
+    public static EventManager instance { get; private set; }
 
     //events for each power
     //this event goes when the power is changed
-    public static event Action powerChanged;
+    public event Action powerChanged;
     //this goes when power is changed to default
-    public static event Action powerDefault;
+    public event Action powerDefault;
     //this goes when power is evo1
-    public static event Action powerOne;
+    public event Action powerOne;
     //this --//-- is evo2
-    public static event Action powerTwo;
+    public event Action powerTwo;
     //this --//-- is evo3
-    public static event Action powerThree;
+    public event Action powerThree;
     //this is activated when player dies
-    public static event Action playerDeath;
+    public event Action playerDeath;
     //this is activated when a checkpoint is updated.
-    public static event Action checkpointUpdated;
+    public event Action checkpointUpdated;
 
-    public static void powerUpdate(GlobalVars.Evolutions state)
+    void Awake() {
+        if (instance != null && instance != this) {
+            Destroy(this);
+        }
+        else 
+        {
+            instance = this;
+        }
+    }
+
+    public void powerUpdate(GlobalVars.Evolutions state)
     {
+        Debug.Log("power update called");
         GlobalVars.Instance.statsEvolved++;
         switch (state)
         {
@@ -44,13 +55,14 @@ public class EventManager
         powerChanged?.Invoke();
     }
 
-    public static void playerDied()
+    public void playerDied()
     {
+        Debug.Log("player died called");
         playerDeath?.Invoke();
         powerUpdate(GlobalVars.Evolutions.defaultEvo);
     }
 
-    public static void checkpointUpdate()
+    public void checkpointUpdate()
     {
         checkpointUpdated?.Invoke();
     }

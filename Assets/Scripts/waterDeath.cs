@@ -6,7 +6,7 @@ public class waterDeath : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            EventManager.playerDied();
+            EventManager.instance.playerDied();
         }
     }
 }

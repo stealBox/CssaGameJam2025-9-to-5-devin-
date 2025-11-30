@@ -46,7 +46,7 @@ public class CollectableScript : MonoBehaviour
     {
         if(colided.CompareTag("Player"))
         {
-            EventManager.powerUpdate(typeOfCollectable);
+            EventManager.instance.powerUpdate(typeOfCollectable);
             particlesCollectible.Play();
             audioEvolve.Play();
         }

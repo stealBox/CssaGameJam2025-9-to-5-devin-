@@ -12,12 +12,14 @@ public class respawn : MonoBehaviour
     {
         respawnNow = false;
         playerObject = this.gameObject;
-        EventManager.playerDeath += respawnPlayer;
+        EventManager.instance.playerDeath += respawnPlayer;
         movement = playerObject.GetComponent<PlayerMovement>();
     }
 
     void respawnPlayer()
     {
+        Debug.Log(movement);
+        Debug.Log(playerObject);
         movement.DisableController();
         movement.getControllerTransform().position = spawnPos.position;
         movement.EnableController();

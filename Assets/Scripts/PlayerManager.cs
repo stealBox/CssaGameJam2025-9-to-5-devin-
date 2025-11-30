@@ -17,7 +17,7 @@ public class PlayerManager : MonoBehaviour
     private bool dead = false;
 
     // Creates a new singleton and player stats
-    void Awake()
+    void Start()
     {
         if (instance != null && instance != this) {
             Destroy(this);
@@ -32,17 +32,17 @@ public class PlayerManager : MonoBehaviour
         playerStats = GameObject.FindFirstObjectByType<PlayerMovement>().GetComponent<PlayerMovement>();
         playerHud = GameObject.FindFirstObjectByType<PlayerHud>().GetComponent<PlayerHud>();
 
-        EventManager.powerOne += powerOneSet;
-        EventManager.powerTwo += powerTwoSet;
-        EventManager.powerThree += powerThreeSet;
-        EventManager.powerDefault += powerDefaultSet;
+        EventManager.instance.powerOne += powerOneSet;
+        EventManager.instance.powerTwo += powerTwoSet;
+        EventManager.instance.powerThree += powerThreeSet;
+        EventManager.instance.powerDefault += powerDefaultSet;
     }
 
     void LateUpdate()
     {
         if (dead)
         {
-            EventManager.playerDied();
+            EventManager.instance.playerDied();
         }
     }
 
@@ -124,7 +124,7 @@ public class PlayerManager : MonoBehaviour
     private void LoseGame() {
         Debug.Log("You lost!");
         health = MAX_HEALTH;
-        EventManager.playerDied();
+        EventManager.instance.playerDied();
     }
 
 }
