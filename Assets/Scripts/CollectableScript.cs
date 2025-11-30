@@ -46,6 +46,7 @@ public class CollectableScript : MonoBehaviour
         {
             EventManager.powerUpdate(typeOfCollectable);
             particlesCollectible.Play();
+            gameObject.GetComponent<AudioSource>().Play();
         }
     }
 

@@ -28,6 +28,7 @@ public class HelpMessage : MonoBehaviour
         {
             playerHud.ShowPopup(message);
             particlesCollectible.Play();
+            gameObject.GetComponent<AudioSource>().Play();
         }
     }
     

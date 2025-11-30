@@ -21,6 +21,9 @@ public class PlayerMovement : MonoBehaviour
     public bool grounded;
     public Vector3 finalMove;
     public PlayerAnimator PlayerAnimator;
+    public AudioSource soundJump;
+    public AudioSource soundJumpHigh;
+    public AudioSource soundRespawn;
 
     public InputAction moveAction;
     public InputAction jumpAction;
@@ -70,6 +73,14 @@ public class PlayerMovement : MonoBehaviour
         {
             GlobalVars.Instance.statsJumps++;
             playerVelocity.y = Mathf.Sqrt(jumpHeight * -2.0f * gravity);
+            if (jumpHeight > DEFAULT_JUMP)
+            {
+                soundJumpHigh.Play();
+            }
+            else
+            {
+                soundJump.Play();
+            }
         }
 
         playerVelocity.y += gravity * Time.deltaTime;
@@ -142,5 +153,6 @@ public class PlayerMovement : MonoBehaviour
     public void DisableController()
     {
         controller.enabled = false;
+        soundRespawn.Play();
     }
 }
