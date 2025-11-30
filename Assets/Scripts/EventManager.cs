@@ -17,6 +17,7 @@ public class EventManager : MonoBehaviour
 
     public static void powerUpdate(GlobalVars.Evolutions state)
     {
+        powerChanged?.Invoke();
         switch (state)
         {
             case GlobalVars.Evolutions.evo1:
