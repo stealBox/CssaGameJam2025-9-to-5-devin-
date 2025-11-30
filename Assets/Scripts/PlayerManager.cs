@@ -113,7 +113,7 @@ public class PlayerManager : MonoBehaviour
         }
         else if (currScene.name.Equals("LevelLab"))
         {
-            // Win game
+            SceneManager.LoadScene("Credits");
         }
     }
 
