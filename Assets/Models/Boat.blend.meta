@@ -3,12 +3,7 @@ guid: 00b6f56e937609441b46df159599a610
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: ring
-    second: {fileID: 2100000, guid: e7af3c1d0d6a2f0419d69385176a576a, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0

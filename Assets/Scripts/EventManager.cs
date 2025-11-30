@@ -1,8 +1,10 @@
 using UnityEngine;
 using System;
 
-public class EventManager : MonoBehaviour
+public class EventManager
 {
+    public static EventManager Instance { get; private set; }
+
     //events for each power
     //this event goes when the power is changed
     public static event Action powerChanged;
