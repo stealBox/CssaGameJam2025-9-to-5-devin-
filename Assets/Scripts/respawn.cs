@@ -6,9 +6,11 @@ public class respawn : MonoBehaviour
     private GameObject playerObject;
     public Transform spawnPos;
     private PlayerMovement movement;
+    private bool respawnNow;
 
     void Start()
     {
+        respawnNow = false;
         playerObject = this.gameObject;
         EventManager.playerDeath += respawnPlayer;
         movement = playerObject.GetComponent<PlayerMovement>();
@@ -17,9 +19,8 @@ public class respawn : MonoBehaviour
     void respawnPlayer()
     {
         Debug.Log("gets here?");
-        //movement.enabled = false;
-        playerObject.transform.position = spawnPos.position;
-        //movement.enabled = true;
+        movement.DisableController();
+        movement.getControllerTransform().position = spawnPos.position;
+        movement.EnableController();
     }
-
 }
