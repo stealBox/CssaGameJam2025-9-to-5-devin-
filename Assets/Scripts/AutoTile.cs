@@ -10,7 +10,7 @@ public class AutoTile : MonoBehaviour
     void Start()
     {
         material = gameObject.GetComponent<Renderer>().material;
-        material.SetTextureScale("_BaseMap", new Vector2(transform.localScale.x * textureScale, transform.localScale.y * textureScale));
+        material.SetTextureScale("_BaseMap", new Vector2(transform.localScale.z * textureScale, transform.localScale.y * textureScale));
     }
 
 }

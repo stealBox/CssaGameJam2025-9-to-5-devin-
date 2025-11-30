@@ -14,12 +14,12 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
-  m_Fog: 0
-  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  m_FogMode: 3
-  m_FogDensity: 0.01
+  m_Fog: 1
+  m_FogColor: {r: 0, g: 0, b: 0, a: 1}
+  m_FogMode: 2
+  m_FogDensity: 0.068
   m_LinearFogStart: 0
-  m_LinearFogEnd: 300
+  m_LinearFogEnd: 43.49
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
@@ -183,6 +183,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -0.04
       objectReference: {fileID: 0}
+    - target: {fileID: -4683669308469848369, guid: 297362e71e90b224fa588b3a092e9f7a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 840b15ddae5a641498827148fb277eba, type: 2}
     - target: {fileID: 919132149155446097, guid: 297362e71e90b224fa588b3a092e9f7a, type: 3}
       propertyPath: m_Name
       value: rightTiltPlatform (2)
@@ -818,6 +822,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: de49ee3404bdc924faaf4e1885f03baa, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 2d446584acea8f142ac8a187ddc6aa5e, type: 2}
     - target: {fileID: 919132149155446097, guid: de49ee3404bdc924faaf4e1885f03baa, type: 3}
       propertyPath: m_Name
       value: lazyCave
@@ -825,7 +833,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: de49ee3404bdc924faaf4e1885f03baa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1080241856}
   m_SourcePrefab: {fileID: 100100000, guid: de49ee3404bdc924faaf4e1885f03baa, type: 3}
 --- !u!1001 &66855182
 PrefabInstance:
@@ -5152,6 +5163,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -4683669308469848369, guid: 1f686459cf4dd5e4db3f6a7dd7ae9a78, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 840b15ddae5a641498827148fb277eba, type: 2}
     - target: {fileID: 919132149155446097, guid: 1f686459cf4dd5e4db3f6a7dd7ae9a78, type: 3}
       propertyPath: m_Name
       value: upTiltPltform
@@ -5270,7 +5285,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6033321496179799892, guid: fbe3edd72c08f1e418e16f50a9c1beaf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.16
+      value: -5.15
       objectReference: {fileID: 0}
     - target: {fileID: 6033321496179799892, guid: fbe3edd72c08f1e418e16f50a9c1beaf, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6806,6 +6821,24 @@ Transform:
   - {fileID: 821382987}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1080241852 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: de49ee3404bdc924faaf4e1885f03baa, type: 3}
+  m_PrefabInstance: {fileID: 66381568}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1080241856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1080241852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fa03498d33e40f4293da346efafef15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AutoTile
+  textureScale: 0.5
 --- !u!1001 &1104675941
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7234,7 +7267,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 5091c060bcb6380428182053ac69caf8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7848,7 +7881,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6033321496179799892, guid: fbe3edd72c08f1e418e16f50a9c1beaf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.8999996
+      value: -2.8
       objectReference: {fileID: 0}
     - target: {fileID: 6033321496179799892, guid: fbe3edd72c08f1e418e16f50a9c1beaf, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8211,7 +8244,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 5091c060bcb6380428182053ac69caf8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8747,6 +8780,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 1.4385
       objectReference: {fileID: 0}
+    - target: {fileID: -4683669308469848369, guid: 297362e71e90b224fa588b3a092e9f7a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 840b15ddae5a641498827148fb277eba, type: 2}
     - target: {fileID: 919132149155446097, guid: 297362e71e90b224fa588b3a092e9f7a, type: 3}
       propertyPath: m_Name
       value: rightTiltPlatform
@@ -9574,6 +9611,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7057377305679468996, guid: b3aa5d0b4a4dbb241b880d403dabddd0, type: 3}
   m_PrefabInstance: {fileID: 1441123983}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1455176298 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d922abca43b9fd24a95f067952278e40, type: 3}
+  m_PrefabInstance: {fileID: 1495642924}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1455176302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1455176298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fa03498d33e40f4293da346efafef15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AutoTile
+  textureScale: 0.5
 --- !u!1001 &1455511712
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9758,6 +9813,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: d922abca43b9fd24a95f067952278e40, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 2d446584acea8f142ac8a187ddc6aa5e, type: 2}
     - target: {fileID: 919132149155446097, guid: d922abca43b9fd24a95f067952278e40, type: 3}
       propertyPath: m_Name
       value: lazyCaveTwo
@@ -9765,7 +9824,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d922abca43b9fd24a95f067952278e40, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1455176302}
   m_SourcePrefab: {fileID: 100100000, guid: d922abca43b9fd24a95f067952278e40, type: 3}
 --- !u!1001 &1498785081
 PrefabInstance:
@@ -10821,6 +10883,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -1.7
       objectReference: {fileID: 0}
+    - target: {fileID: -4683669308469848369, guid: 1f686459cf4dd5e4db3f6a7dd7ae9a78, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 840b15ddae5a641498827148fb277eba, type: 2}
     - target: {fileID: 919132149155446097, guid: 1f686459cf4dd5e4db3f6a7dd7ae9a78, type: 3}
       propertyPath: m_Name
       value: upTiltPltform (1)
@@ -12593,6 +12659,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 1.4385
       objectReference: {fileID: 0}
+    - target: {fileID: -4683669308469848369, guid: 297362e71e90b224fa588b3a092e9f7a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 840b15ddae5a641498827148fb277eba, type: 2}
     - target: {fileID: 919132149155446097, guid: 297362e71e90b224fa588b3a092e9f7a, type: 3}
       propertyPath: m_Name
       value: rightTiltPlatform (1)
