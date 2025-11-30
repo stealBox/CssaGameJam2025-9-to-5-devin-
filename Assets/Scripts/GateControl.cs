@@ -34,11 +34,11 @@ public class GateControl : MonoBehaviour
     {
         if(PlayerManager.getState() == stateToAllow)
         {
-            gateDoor.SetActive(true);
+            gateDoor.SetActive(false);
         }
         else
         {
-            gateDoor.SetActive(false);
+            gateDoor.SetActive(true);
         }
     }
 
