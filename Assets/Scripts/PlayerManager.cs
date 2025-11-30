@@ -107,12 +107,14 @@ public class PlayerManager : MonoBehaviour
     // What happens when the player wins
     public void WinGame() {
         Scene currScene = SceneManager.GetActiveScene();
+        GlobalVars.statsLevels++;
         if (currScene.name.Equals("Level1"))
         {
             SceneManager.LoadScene("LevelLab");
         }
         else if (currScene.name.Equals("LevelLab"))
         {
+            GlobalVars.statsArms++;
             // Win game
         }
     }
