@@ -1,5 +1,6 @@
 using UnityEditor.ShortcutManagement;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -105,7 +106,15 @@ public class PlayerManager : MonoBehaviour
 
     // What happens when the player wins
     public void WinGame() {
-        Debug.Log("You won!");
+        Scene currScene = SceneManager.GetActiveScene();
+        if (currScene.name.Equals("Level1"))
+        {
+            SceneManager.LoadScene("Level1");
+        }
+        else if (currScene.name.Equals("LevelLab"))
+        {
+            // Win game
+        }
     }
 
     // What happens when the player loses

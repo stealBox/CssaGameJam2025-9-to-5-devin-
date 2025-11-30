@@ -42,6 +42,7 @@ public class EventManager : MonoBehaviour
     public static void playerDied()
     {
         playerDeath?.Invoke();
+        powerDefault?.Invoke();
     }
 
 }

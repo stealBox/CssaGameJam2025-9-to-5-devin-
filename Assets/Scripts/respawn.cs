@@ -18,7 +18,6 @@ public class respawn : MonoBehaviour
 
     void respawnPlayer()
     {
-        Debug.Log("gets here?");
         movement.DisableController();
         movement.getControllerTransform().position = spawnPos.position;
         movement.EnableController();
