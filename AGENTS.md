@@ -2,13 +2,13 @@
 - Project name: CssaGameJam2025-9-to-5-devin-
 - Unity version: Unity 6000.2.14f1
 - Active scene:
-  - Name: MainMenu
+  - Name: Credits
   - Tags:
     - Untagged, Respawn, Finish, EditorOnly, MainCamera, Player, GameController, Collectable, Evo1, Evo2, Evo3, DefaultEvo, Enemy
   - Layers:
     - Default, TransparentFX, Ignore Raycast, Water, UI
 - Active game object:
-  - Name: GlobalVars
+  - Name: Credits Canvas
   - Tag: Untagged
-  - Layer: Default
+  - Layer: UI
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->
