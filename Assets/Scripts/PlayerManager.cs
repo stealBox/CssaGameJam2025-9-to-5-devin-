@@ -1,3 +1,4 @@
+using UnityEditor.ShortcutManagement;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
@@ -12,6 +13,7 @@ public class PlayerManager : MonoBehaviour
     public static GlobalVars.Evolutions playerState;
 
     private int health;
+    private bool dead = false;
 
     // Creates a new singleton and player stats
     void Awake()
@@ -35,10 +37,12 @@ public class PlayerManager : MonoBehaviour
         EventManager.powerDefault += powerDefaultSet;
     }
 
-    // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-        
+        if (dead)
+        {
+            EventManager.playerDied();
+        }
     }
 
     private void powerOneSet()
@@ -107,5 +111,8 @@ public class PlayerManager : MonoBehaviour
     // What happens when the player loses
     private void LoseGame() {
         Debug.Log("You lost!");
+        health = MAX_HEALTH;
+        EventManager.playerDied();
     }
+
 }

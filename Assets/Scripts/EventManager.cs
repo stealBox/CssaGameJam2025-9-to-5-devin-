@@ -14,6 +14,8 @@ public class EventManager : MonoBehaviour
     public static event Action powerTwo;
     //this --//-- is evo3
     public static event Action powerThree;
+    //this is activated when player dies
+    public static event Action playerDeath;
 
     public static void powerUpdate(GlobalVars.Evolutions state)
     {
@@ -35,6 +37,11 @@ public class EventManager : MonoBehaviour
                     powerDefault?.Invoke();
                     break;
         }
+    }
+
+    public static void playerDied()
+    {
+        playerDeath?.Invoke();
     }
 
 }
