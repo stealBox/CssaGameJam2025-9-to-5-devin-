@@ -16,6 +16,8 @@ public class EventManager : MonoBehaviour
     public static event Action powerThree;
     //this is activated when player dies
     public static event Action playerDeath;
+    //this is activated when a checkpoint is updated.
+    public static event Action checkpointUpdated;
 
     public static void powerUpdate(GlobalVars.Evolutions state)
     {
@@ -43,6 +45,11 @@ public class EventManager : MonoBehaviour
     {
         playerDeath?.Invoke();
         powerDefault?.Invoke();
+    }
+
+    public static void checkpointUpdate()
+    {
+        checkpointUpdated?.Invoke();
     }
 
 }

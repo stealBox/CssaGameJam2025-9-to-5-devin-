@@ -123,7 +123,9 @@ public class PlayerMovement : MonoBehaviour
         jumpHeight = DEFAULT_JUMP;
         gravity = DEFAULT_GRAVITY;
         PlayerAnimator.legScale = 0f;
-        PlayerAnimator.hideWings();
+        if (currentEvo == GlobalVars.Evolutions.evo3) {
+            PlayerAnimator.hideWings();
+        }
     }
 
     public Transform getControllerTransform()
