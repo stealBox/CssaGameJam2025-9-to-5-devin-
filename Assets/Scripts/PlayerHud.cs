@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class PlayerHud : MonoBehaviour
 {
@@ -17,10 +18,24 @@ public class PlayerHud : MonoBehaviour
     public Text textZone;
     public Text textEvo;
 
+    public GameObject panelPopup;
+    public Text textPopup;
+
+    [Multiline]
+    public string startMessage = "";
+
+    public InputAction jumpAction;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         textZone.text = zoneName;
+        SetEvoText(GlobalVars.Evolutions.defaultEvo);
+        jumpAction = InputSystem.actions.FindAction("Jump");
+
+        if (startMessage != "") {
+            ShowPopup(startMessage);
+        }
     }
 
     public void SetEvoText(GlobalVars.Evolutions evo) {
@@ -37,6 +52,17 @@ public class PlayerHud : MonoBehaviour
             case GlobalVars.Evolutions.evo3:
                 textEvo.text = NAME_EVO3;
                 break;
+        }
+    }
+
+    public void ShowPopup(string text) {
+        panelPopup.SetActive(true);
+        textPopup.text = text;
+    }
+
+    public void Update() {
+        if (jumpAction.triggered) {
+            panelPopup.SetActive(false);
         }
     }
 }
