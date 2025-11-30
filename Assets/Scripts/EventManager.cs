@@ -21,7 +21,7 @@ public class EventManager : MonoBehaviour
 
     public static void powerUpdate(GlobalVars.Evolutions state)
     {
-        
+        GlobalVars.Instance.statsEvolved++;
         switch (state)
         {
             case GlobalVars.Evolutions.evo1:
