@@ -14,10 +14,12 @@ public class CollectableScript : MonoBehaviour
     public bool evo3;
 
     public ParticleSystem particlesCollectible;
+    public AudioSource audioEvolve;
 
     void Start()
     {
         particlesCollectible.transform.SetParent(null);
+        audioEvolve.transform.SetParent(null);
 
         if (evo1)
         {
@@ -46,7 +48,7 @@ public class CollectableScript : MonoBehaviour
         {
             EventManager.powerUpdate(typeOfCollectable);
             particlesCollectible.Play();
-            gameObject.GetComponent<AudioSource>().Play();
+            audioEvolve.Play();
         }
     }
 

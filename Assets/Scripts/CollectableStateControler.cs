@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class CollectableStateControler : MonoBehaviour
 {
-    GameObject[] evo1Collectables;
-    GameObject[] evo2Collectables;
-    GameObject[] evo3Collectables;
+    public GameObject[] evo1Collectables;
+    public GameObject[] evo2Collectables;
+    public GameObject[] evo3Collectables;
     void Start()
     {
         evo1Collectables = GameObject.FindGameObjectsWithTag("Evo1");

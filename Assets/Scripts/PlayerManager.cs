@@ -115,7 +115,7 @@ public class PlayerManager : MonoBehaviour
         else if (currScene.name.Equals("LevelLab"))
         {
             SceneManager.LoadScene("Credits");
-            GlobalVars.Instance.statsArms++;
+            GlobalVars.Instance.statsArms -= 1;
             // Win game
         }
     }
