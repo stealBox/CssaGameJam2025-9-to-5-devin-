@@ -111,4 +111,19 @@ public class PlayerMovement : MonoBehaviour
         jumpHeight = DEFAULT_JUMP;
         gravity = DEFAULT_GRAVITY;
     }
+
+    public Transform getControllerTransform()
+    {
+        return controller.transform;
+    }
+
+    public void EnableController()
+    {
+        controller.enabled = true;
+    }
+
+    public void DisableController()
+    {
+        controller.enabled = false;
+    }
 }
