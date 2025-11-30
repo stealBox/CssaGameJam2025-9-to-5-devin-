@@ -15,7 +15,15 @@ public class SpikeMover : MonoBehaviour
     void Start()
     {
         basePos = transform.position;
-        activatedPos = new Vector3(basePos.x, basePos.y + spikeHeight, basePos.z);
+        if (transform.rotation.z == -180)
+        {
+            activatedPos = new Vector3(basePos.x, basePos.y - spikeHeight, basePos.z);
+        } 
+        else
+        {
+            activatedPos = new Vector3(basePos.x, basePos.y + spikeHeight, basePos.z);
+        }
+        
 
         spikeObject = GetComponentInParent<SpikeObject>();
     }
