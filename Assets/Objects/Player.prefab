@@ -260,4 +260,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   player: {fileID: 2946541705760327609}
   characterMesh: {fileID: 881975932895716557}
-  legScale: 0.995
+  legScale: 0

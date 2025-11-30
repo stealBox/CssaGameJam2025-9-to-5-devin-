@@ -7,8 +7,9 @@ public class PlayerManager : MonoBehaviour
     public static PlayerManager instance {get; private set;}
 
     private PlayerMovement playerStats;
+    private PlayerHud playerHud;
 
-    private static GlobalVars.Evolutions playerState;
+    public static GlobalVars.Evolutions playerState;
 
     private int health;
 
@@ -25,7 +26,8 @@ public class PlayerManager : MonoBehaviour
 
         playerState = GlobalVars.Evolutions.defaultEvo;
         health = MAX_HEALTH;
-        playerStats = GameObject.FindObjectOfType<PlayerMovement>().GetComponent<PlayerMovement>();
+        playerStats = GameObject.FindFirstObjectByType<PlayerMovement>().GetComponent<PlayerMovement>();
+        playerHud = GameObject.FindFirstObjectByType<PlayerHud>().GetComponent<PlayerHud>();
 
         EventManager.powerOne += powerOneSet;
         EventManager.powerTwo += powerTwoSet;
@@ -75,6 +77,7 @@ public class PlayerManager : MonoBehaviour
     public void changeState(GlobalVars.Evolutions evo) {
         playerState = evo;
         playerStats.changeEvo(evo);
+        playerHud.SetEvoText(evo);
     } 
 
     public static GlobalVars.Evolutions getState()
