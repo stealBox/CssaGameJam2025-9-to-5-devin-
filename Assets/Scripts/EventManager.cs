@@ -21,7 +21,7 @@ public class EventManager : MonoBehaviour
 
     public static void powerUpdate(GlobalVars.Evolutions state)
     {
-        powerChanged?.Invoke();
+        
         switch (state)
         {
             case GlobalVars.Evolutions.evo1:
@@ -39,6 +39,7 @@ public class EventManager : MonoBehaviour
                     powerDefault?.Invoke();
                     break;
         }
+        powerChanged?.Invoke();
     }
 
     public static void playerDied()
