@@ -8,7 +8,7 @@
   - Layers:
     - Default, TransparentFX, Ignore Raycast, Water, UI
 - Active game object:
-  - Name: BreakableTiles
-  - Tag: Untagged
+  - Name: collectible_jump
+  - Tag: Evo2
   - Layer: Default
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->
