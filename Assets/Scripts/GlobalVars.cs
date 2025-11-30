@@ -15,10 +15,10 @@ public class GlobalVars : MonoBehaviour
     public static bool evo2PickUp = true;
     public static bool evo3PickUp = true;
 
-    public int statsJumps = 0;
-    public int statsLevels = 0;
-    public int statsEvolved = 0;
-    public int statsArms = 0;
+    public static int statsJumps = 0;
+    public static int statsLevels = 0;
+    public static int statsEvolved = 0;
+    public static int statsArms = 0;
 
     // Can we rename Collectibles to something else? Like evolutions?
     
