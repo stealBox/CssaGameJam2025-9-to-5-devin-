@@ -44,7 +44,7 @@ public class EventManager : MonoBehaviour
     public static void playerDied()
     {
         playerDeath?.Invoke();
-        powerDefault?.Invoke();
+        powerUpdate(GlobalVars.Evolutions.defaultEvo);
     }
 
     public static void checkpointUpdate()
