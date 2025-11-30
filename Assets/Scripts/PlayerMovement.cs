@@ -68,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (jumpAction.triggered && grounded)
         {
-            GlobalVars.statsJumps++;
+            GlobalVars.Instance.statsJumps++;
             playerVelocity.y = Mathf.Sqrt(jumpHeight * -2.0f * gravity);
         }
 
