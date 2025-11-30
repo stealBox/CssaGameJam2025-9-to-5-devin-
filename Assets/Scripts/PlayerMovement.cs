@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     private float jumpHeight;
     private float gravity;
 
+
     private Transform cam;
 
     private float turnSmoothTime = 0.1f;
@@ -19,9 +20,12 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 playerVelocity;
     public bool grounded;
     public Vector3 finalMove;
+    public PlayerAnimator PlayerAnimator;
 
     public InputAction moveAction;
     public InputAction jumpAction;
+
+    public GlobalVars.Evolutions currentEvo = GlobalVars.Evolutions.defaultEvo;
 
     // Adds controller when program starts
     private void Start() 
@@ -52,7 +56,6 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         Vector2 input = moveAction.ReadValue<Vector2>();
         Vector3 move = new Vector3(input.x, 0, input.y).normalized;
         
@@ -95,13 +98,22 @@ public class PlayerMovement : MonoBehaviour
 
         switch (evo) {
             case GlobalVars.Evolutions.evo1:
+                currentEvo = GlobalVars.Evolutions.evo1;
                 playerSpeed *= 1.5f;
+                PlayerAnimator.legScale = 0.5f;
                 break;
             case GlobalVars.Evolutions.evo2:
+                currentEvo = GlobalVars.Evolutions.evo2;
                 jumpHeight *= 2.0f;
+                PlayerAnimator.legScale = 1f;
                 break;
             case GlobalVars.Evolutions.evo3:
+                currentEvo = GlobalVars.Evolutions.evo3;
                 gravity /= 2.5f;
+                PlayerAnimator.showWings();
+                break;
+            default:
+                currentEvo = GlobalVars.Evolutions.defaultEvo;
                 break;
         }
     }
@@ -110,6 +122,8 @@ public class PlayerMovement : MonoBehaviour
         playerSpeed = DEFAULT_SPEED;
         jumpHeight = DEFAULT_JUMP;
         gravity = DEFAULT_GRAVITY;
+        PlayerAnimator.legScale = 0f;
+        PlayerAnimator.hideWings();
     }
 
     public Transform getControllerTransform()

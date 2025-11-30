@@ -12,6 +12,8 @@ public class PlayerAnimator : MonoBehaviour
     private const string ANIM_RUN = "char_run";
     private const string ANIM_JUMP = "char_jump";
 
+    private const float LEG_LERP_SPEED = 0.5f;
+
     private const float CHARACTER_Y_BASE = -1.075f;
     private const float CHARACTER_Y_EXTEND_SCALE = 1f;
 
@@ -22,8 +24,14 @@ public class PlayerAnimator : MonoBehaviour
 
     public PlayerMovement player;
     public SkinnedMeshRenderer characterMesh;
+    public GameObject wingsMesh;
+
     [Range(0f, 1f)]
     public float legScale = 0f;
+    private float lastLegScale = 0f;
+
+    private float legScaleLerp = 0f;
+    private float legScaleLerpT = 0f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -34,10 +42,17 @@ public class PlayerAnimator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        characterMesh.SetBlendShapeWeight(BLENDSHAPE_LONGLEGS, legScale * 100f);
+        if (lastLegScale != legScale) {
+            legScaleLerpT = 0f;
+        }
+
+        legScaleLerp = Mathf.Lerp(legScaleLerp, legScale, legScaleLerpT);
+        characterMesh.SetBlendShapeWeight(BLENDSHAPE_LONGLEGS, legScaleLerp * 100f);
+        legScaleLerpT += LEG_LERP_SPEED * Time.deltaTime;
+
         gameObject.transform.position = new Vector3(
                 player.gameObject.transform.position.x, 
-                player.gameObject.transform.position.y + CHARACTER_Y_BASE + legScale * CHARACTER_Y_EXTEND_SCALE, 
+                player.gameObject.transform.position.y + CHARACTER_Y_BASE + legScaleLerp * CHARACTER_Y_EXTEND_SCALE, 
                 player.gameObject.transform.position.z
             );
 
@@ -71,5 +86,15 @@ public class PlayerAnimator : MonoBehaviour
                 animation.Blend(ANIM_RUN, 0.0f);
             }
         }
+
+        lastLegScale = legScale;
+    }
+
+    public void showWings() {
+        wingsMesh.SetActive(true);
+    }
+
+    public void hideWings() {
+        wingsMesh.SetActive(false);
     }
 }
