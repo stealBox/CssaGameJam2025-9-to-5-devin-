@@ -7,6 +7,8 @@ public class HelpMessage : MonoBehaviour
     [Multiline]
     public string message = "*You question what this help message was supposed to say...";
 
+    public ParticleSystem particlesCollectible;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -25,6 +27,7 @@ public class HelpMessage : MonoBehaviour
         if(collider.CompareTag("Player"))
         {
             playerHud.ShowPopup(message);
+            particlesCollectible.Play();
         }
     }
     

@@ -7,7 +7,7 @@ public class SpikeMover : MonoBehaviour
     private Vector3 basePos;
     private Vector3 activatedPos;
     [SerializeField] private float duration = 1f;
-    [SerializeField] private float delay = 1f;
+    [SerializeField] private float delay = 0.1f;
     [SerializeField] private float spikeHeight = 5.0f;
 
     private SpikeObject spikeObject;

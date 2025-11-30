@@ -13,8 +13,12 @@ public class CollectableScript : MonoBehaviour
     public bool evo2;
     public bool evo3;
 
+    public ParticleSystem particlesCollectible;
+
     void Start()
     {
+        particlesCollectible.transform.SetParent(null);
+
         if (evo1)
         {
             typeOfCollectable = GlobalVars.Evolutions.evo1;
@@ -41,6 +45,7 @@ public class CollectableScript : MonoBehaviour
         if(colided.CompareTag("Player"))
         {
             EventManager.powerUpdate(typeOfCollectable);
+            particlesCollectible.Play();
         }
     }
 

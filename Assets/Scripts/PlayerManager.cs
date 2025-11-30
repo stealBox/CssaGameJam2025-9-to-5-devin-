@@ -109,7 +109,7 @@ public class PlayerManager : MonoBehaviour
         Scene currScene = SceneManager.GetActiveScene();
         if (currScene.name.Equals("Level1"))
         {
-            SceneManager.LoadScene("Level1");
+            SceneManager.LoadScene("LevelLab");
         }
         else if (currScene.name.Equals("LevelLab"))
         {

@@ -8,6 +8,7 @@ public class Checkpoint : MonoBehaviour
     private new Renderer renderer;
 
     public bool activated = false;
+    public Transform respawnPos;
 
     private respawn respawn;
 
@@ -33,7 +34,7 @@ public class Checkpoint : MonoBehaviour
             renderer.material = materialActivated;
 
             activated = true;
-            respawn.spawnPos = transform;
+            respawn.spawnPos = respawnPos;
         }
     }
 }
