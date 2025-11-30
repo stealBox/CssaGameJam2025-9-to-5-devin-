@@ -25,6 +25,7 @@ public class PlayerAnimator : MonoBehaviour
     public PlayerMovement player;
     public SkinnedMeshRenderer characterMesh;
     public GameObject wingsMesh;
+    public ParticleSystem particlesFeather;
 
     [Range(0f, 1f)]
     public float legScale = 0f;
@@ -92,9 +93,11 @@ public class PlayerAnimator : MonoBehaviour
 
     public void showWings() {
         wingsMesh.SetActive(true);
+        particlesFeather.Play();
     }
 
     public void hideWings() {
         wingsMesh.SetActive(false);
+        particlesFeather.Play();
     }
 }
